@@ -18,6 +18,7 @@ provider "aws" {
 resource "aws_instance" "devsecops_demo" {
   ami           = "ami-0ec0e125bb6c6e8ec"
   instance_type = "t2.micro"
+  count         = 5
 
   tags = {
     Name = "DevsecopsDemo"
