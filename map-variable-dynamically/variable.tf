@@ -1,11 +1,7 @@
-variable usersage {
-        type = map
-        default = {
-                gaurav = 20
-                saurav = 19
-        }
+variable age {
+        type = number
 }
 
-variable "username" {
+variable username {
     type = string
 }
