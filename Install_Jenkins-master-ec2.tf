@@ -33,7 +33,7 @@ resource "aws_security_group" "jenkins_sg" {
   }
 }
 
-resource "aws_instance" "jenkins_server" {
+resource "aws_instance" "jenkins_master" {
   ami           = "ami-08c40ec9ead489470" # Amazon Linux 2 AMI for Mumbai region
   instance_type = "t2.micro"
   key_name      = aws_key_pair.jenkins_key.key_name
@@ -75,11 +75,11 @@ resource "aws_instance" "jenkins_server" {
               EOF
 
   tags = {
-    Name = "Jenkins-Server"
+    Name = "Jenkins-Master"
   }
 }
 
 output "jenkins_public_ip" {
-  value       = aws_instance.jenkins_server.public_ip
-  description = "Public IP of the Jenkins server"
+  value       = aws_instance.jenkins_master.public_ip
+  description = "Public IP of the Jenkins master"
 }
