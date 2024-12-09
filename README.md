@@ -1,17 +1,17 @@
-### Explanation & Instructions:
+### Install Terraform
 
--   **Instance Type**: A `t3.medium` instance is used for better CPU and memory resources.
--   **User Data Script**:
-    -   Installs required packages (`java-17-openjdk`, `vim`, `git`, `wget`, `unzip`).
-    -   Installs and configures PostgreSQL locally on the instance.
-    -   Downloads and installs SonarQube, sets permissions, and starts SonarQube as a service.
--   **Security Group**: Opens port 22 for SSH and port 9000 for SonarQube web access.
--   **SonarQube Database Configuration**: Configured to connect to the locally hosted PostgreSQL instance.
+yum install -y yum-utils
+yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+yum -y install terraform
 
-### Cost Optimization:
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+yum install unzip -y
+unzip awscliv2.zip
+sudo ./aws/install
 
--   **Single Instance**: Combines SonarQube and PostgreSQL on the same instance to avoid the cost of an additional RDS instance.
--   **t3.medium**: Provides a cost-effective balance of performance and price, better than t2 instances for production-like usage.
+### Sync System Time
+
+timedatectl set-ntp true
 
 ### Deployment Steps:
 
